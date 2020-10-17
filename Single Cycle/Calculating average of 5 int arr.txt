@@ -1,0 +1,21 @@
+swap :
+
+
+Data memory 01:  0x 0008
+Data memory 02:  0x 0016
+Data memory 02:  0x 0032
+Data memory 02:  0x 0064
+Data memory 02:  0x 0128
+
+
+la $r5, 1				0014		(initial adress of array)
+li $r6, 5				0018
+loop:
+lw 	$r2, 0($r5)   			8540	10000 101 010 00000 
+add     $r3, $r3, $r2			0a6c	00001 010 011 01100
+subi 	$r6, $r6, 1			4ec1	01001 110 110 00001
+addi 	$r5, $r5, 1			45a1	01000 101 101 00001
+bne 	$r6, loop			ae02	10101 110 000 00002
+
+sw 	$r3, 1($r5)			8d60	10001 101 011 00000
+print $r3				0300	00000 011 000 00000
